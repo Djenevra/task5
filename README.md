@@ -1,1 +1,0 @@
-Freelance stock app
