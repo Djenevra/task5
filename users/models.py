@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from decimal import Decimal
-from billing.models import CurrencyCirculation
 
 
 class User(AbstractUser):
