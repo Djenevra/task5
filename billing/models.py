@@ -1,7 +1,6 @@
 from django.db import models
 
 
-
 class CurrencyCirculation(models.Model):
     user = models.ForeignKey('users.User', on_delete = models.CASCADE)
     task = models.ForeignKey('tasks.Task', on_delete = models.CASCADE, default=None, null=True)
@@ -10,7 +9,6 @@ class CurrencyCirculation(models.Model):
     credit = models.DecimalField(max_digits=7, decimal_places=2, default=0)
     currency = models.DecimalField(max_digits=7, decimal_places=2, default=0)
     balance = models.DecimalField(max_digits=7, decimal_places=2, default=0)
-
 
 class TaskRelatedNotes(models.Model):
     task = models.ForeignKey('tasks.Task', on_delete = models.CASCADE)

@@ -9,7 +9,6 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('username', 'email',)
 
 class TaskSerializer(serializers.ModelSerializer):
-    # created_by = UserSerializer(required=False)
     class Meta:
         model = Task
         fields = ('title', 'description', 'created_by', 'set_price')
