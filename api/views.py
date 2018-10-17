@@ -1,9 +1,10 @@
 from django.shortcuts import render#from django.contrib.auth.models import User
 from rest_framework import viewsets
 from api.serializer import UserSerializer, TaskSerializer
-from users.models import User
+from django.contrib.auth import get_user_model
 from tasks.models import Task
 
+User = get_user_model()
 
 class ExecutorViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
