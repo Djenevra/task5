@@ -12,7 +12,7 @@ class ExecutorViewSet(viewsets.ModelViewSet):
 
 
 class PurchaserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.filter(user_type = User.purchaser)
+    queryset = User.objects.filter(user_type = User.PURCHASER)
     serializer_class = UserSerializer
 
 

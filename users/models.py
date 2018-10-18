@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from decimal import Decimal
 from django.contrib.auth import get_user_model
+from django.utils.translation import gettext as _
 
 
 class User(AbstractUser):
@@ -9,17 +10,18 @@ class User(AbstractUser):
     EXECUTOR = 2
 
     USER_TYPES = (
-        (PURCHASER, 'purchaser'),
-        (EXECUTOR, 'executor'))
+        (PURCHASER, _('purchaser')),
+        (EXECUTOR, _('executor'))
+    )
 
     name = models.CharField(blank = True, max_length = 255)
-    user_type = models.PositiveSmallIntegerField(choices = user_types,  default=EXECUTOR)
+    user_type = models.PositiveSmallIntegerField(choices=USER_TYPES, default=EXECUTOR)
     balance = models.DecimalField(decimal_places = 2, max_digits = 7, default = 0)
 
     def __str__(self):
      return self.username
 
-     def update_balance(self, reason, money, **kwargs):
+    def update_balance(self, reason, money, **kwargs):
         pass
         #updated_balance = {}
         #task = kwargs.get('task', None)
