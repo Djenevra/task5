@@ -24,6 +24,7 @@ router.register('executors', views.ExecutorViewSet, 'executors')
 router.register('purchasers', views.PurchaserViewSet, 'purchasers')
 router.register('tasks', views.TaskViewSet)
 router.register('currencycirculation', views.CurrencyCirculationViewSet)
+router.register('taskrelatednotes', views.TaskRelatedNotesViewSet)
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [

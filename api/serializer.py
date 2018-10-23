@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
 from tasks.models import Task
-from billing.models import CurrencyCirculation
+from billing.models import CurrencyCirculation, TaskRelatedNotes
 
 User = get_user_model()
 class UserSerializer(serializers.HyperlinkedModelSerializer):
@@ -18,3 +18,8 @@ class CurrencyCirculationSerializer(serializers.ModelSerializer):
     class Meta:
         model = CurrencyCirculation
         fields = ('user', 'task', 'reason', 'debit', 'credit', 'currency', 'balance')
+
+class TaskRelatedNotesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TaskRelatedNotes
+        fields = ('task', 'executor', 'money')

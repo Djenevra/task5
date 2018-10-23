@@ -1,9 +1,9 @@
 from django.shortcuts import render#from django.contrib.auth.models import User
 from rest_framework import viewsets
-from api.serializer import UserSerializer, TaskSerializer, CurrencyCirculationSerializer
+from api.serializer import UserSerializer, TaskSerializer, CurrencyCirculationSerializer, TaskRelatedNotesSerializer
 from django.contrib.auth import get_user_model
 from tasks.models import Task
-from billing.models import CurrencyCirculation
+from billing.models import CurrencyCirculation, TaskRelatedNotes
 
 User = get_user_model()
 
@@ -24,3 +24,7 @@ class TaskViewSet(viewsets.ModelViewSet):
 class CurrencyCirculationViewSet(viewsets.ModelViewSet):
     queryset = CurrencyCirculation.objects.all()
     serializer_class = CurrencyCirculationSerializer
+
+class TaskRelatedNotesViewSet(viewsets.ModelViewSet):
+    queryset = TaskRelatedNotes.objects.all()
+    serializer_class = TaskRelatedNotesSerializer
