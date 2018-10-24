@@ -7,7 +7,7 @@ User = get_user_model()
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
-        fields = ('username', 'email',)
+        fields = ('username', 'email', 'user_type')
 
 class TaskSerializer(serializers.ModelSerializer):
     class Meta:

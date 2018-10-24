@@ -65,3 +65,4 @@ venv.bak/
 dmypy.json
 *.sqlite3
 *.swp
+*.db
