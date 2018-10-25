@@ -1,0 +1,36 @@
+<!--<h1>{{ task.description }}</h1>
+<ul>
+{% for task in task.set.all %}
+    <li>{{ choice.choice_text }}</li>
+{% endfor %}-->
+</ul>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Task list</title>
+</head>
+<body>
+
+{% load static %}
+<link rel ="stylesheet" href="{% static 'css/bootstrap.min.css' %}"
+type="text/css">
+
+
+<h1>{{ task.title }}</h1>
+
+
+<p>Description: {{ task.description }}</p>
+
+
+<p>Customer: {{ task.created_by }}</p>
+
+
+<p>Expense: {{ task.set_price }}</p>
+<p>
+    <input type="submit" value="take the task">
+  </p>
+
+
+
+</body>
+</html>
