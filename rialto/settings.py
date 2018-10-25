@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'tasks',
     'billing',
     'atl',
+    'django_tables2',
 ]
 
 MIDDLEWARE = [
