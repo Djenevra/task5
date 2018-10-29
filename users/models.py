@@ -22,15 +22,19 @@ class User(AbstractUser):
 
     def update_balance(self, reason, money, **kwargs):
         pass
-        #updated_balance = {}
-        #task = kwargs.get('task', None)
-        #updated_balance['user'] = self
-        #updated_balance['reason'] = reason
-        #updated_balance['debit'] = abs(currency) if currency < 0 else 0
-        #updated_balance['credit'] = abs(currency) if currency > 0 else 0
-        #updated_balance['currency'] = currency
-        #updated_balance['task'] = task
-        #current_balance = User.objects.select_for_update().get(pk=self.pk).balance
-        #updated_balance['balance'] = current_balance + Decimal(balance)
+        updated_balance = {}
+        task = kwargs.get('task', None)
+        updated_balance['user'] = self
+        updated_balance['reason'] = reason
+        updated_balance['debit'] = abs(currency) if currency < 0 else 0
+        updated_balance['credit'] = abs(currency) if currency > 0 else 0
+        updated_balance['currency'] = currency
+        updated_balance['task'] = task
+        current_balance = User.objects.select_for_update().get(pk=self.pk).balance
+        updated_balance['balance'] = current_balance + Decimal(balance)
+
+            # User.objects.select_for_update().filter(pk=self.pk).update(
+            #     balance=F('balance') + Decimal(money)
+            # )
 
         #return updated_balance
