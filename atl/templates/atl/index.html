@@ -1,20 +1,38 @@
-<!---{% if tasks_list %}
-    <ul>
-    {% for task in tasks_list %}
-        <li><a href="/atl/{{ task.id }}/">{{ task.title }}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No polls are available.</p>
-{% endif %} --->
-{% load render_table from django_tables2 %}
-{% load static %}
-<!doctype html>
+
 <html>
-    <head>
-        <link rel="stylesheet" href="{% static 'django_tables2/themes/paleblue/css/screen.css' %}" />
-    </head>
-    <body>
-        {% render_table task_list %}
-    </body>
+<head>
+
+</head>
+<body>
+
+<a href="/atl/sort/?sort=title">sort by name</a>
+<a href="/atl/sort/?sort=set_price">sort by price</a>
+
+<table>
+<tr>
+  <th>Title</th>
+  <th>Description</th>
+  <th>Asignee</th>
+  <th>Executor</th>
+  <th>Price</th>
+  <th>Task id</th>
+</tr>
+{% for task in tasks_table %}
+<tr>
+
+  <th> {{ task.title }}</th>
+  <th> {{ task.description }}</th>
+  <th> {{ task.created_by }}</th>
+  <th> {{ task.executor }}</th>
+  <th> {{ task.set_price }}</th>
+  <th> {{ task.id }}</th>
+  <th><a href="/atl/sort/{{ task.id }}/take" class="button">Take</a><th>
+
+</tr>
+{% endfor %}
+</table>
+
+
+
+</body>
 </html>

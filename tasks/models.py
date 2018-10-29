@@ -8,6 +8,7 @@ class Task(models.Model):
     description = models.CharField(max_length=255)
     title = models.CharField(max_length=255)
     set_price = models.DecimalField(max_digits=7, decimal_places=2, default=0)
+    
 
     def __str__(self):
         return self.title
