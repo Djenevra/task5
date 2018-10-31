@@ -4,7 +4,8 @@ from django.http import HttpResponse
 from billing.models import TaskRelatedNotes
 from users.models import User
 from decimal import Decimal
-from django.db.models import Q
+from django.db import transaction
+from tasks.models import Task
 
 
 def index(request):
@@ -16,11 +17,18 @@ def index(request):
     return render(request, 'atl/index.html', context)
 
 def take_task(request, task_id):
-    task=Task.objects.get(pk=task_id, executor=None)
+    Task.objects.filter(pk=task_id).update(executor_id=request.user.id)
+    task=Task.objects.get(pk=task_id)
     notes, created = TaskRelatedNotes.objects.get_or_create(
-            task=Task.objects.get(pk=task_id, executor=None),
+            task=Task.objects.get(pk=task_id),
             executor_id=request.user.id,
-            money=task.set_price)
+            price=task.set_price)
+
+    print ("AAAAAAAAAAAAAAAAAAAAAAA", task.executor_id, task.created_by_id)
     if created:
-        Task.objects.filter(pk=task_id, executor=None).update(executor=request.user.id)
+        with transaction.atomic():
+            request.user.update_balance(task.set_price, task.executor_id, task.created_by_id,)
+
+
+
     return HttpResponse("Success! Task's id is %d" % task_id)
