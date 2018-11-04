@@ -12,7 +12,7 @@ class User(AbstractUser):
 
     USER_TYPES = (
         (PURCHASER, _('purchaser')),
-        (EXECUTOR, _('executor'))
+        (EXECUTOR, _('executor')),
     )
 
     name = models.CharField(blank = True, max_length = 255)
@@ -28,20 +28,3 @@ class User(AbstractUser):
         print ("executor id =", executor_id, "created_by id =", created_by_id)
         User.objects.select_for_update().filter(pk=executor_id).update(
         balance=F('balance') + set_price)
-        #current_balance = User.objects.select_for_update().get(pk=self.id).balance
-        #ml_filter['balance'] = current_balance + Decimal(set_price)
-    #def update_balance(self, reason, set_price, **kwargs):
-    #    ml_filter = {}
-    #    task = kwargs.get('task', None)
-    #    ml_filter['reason'] = reason
-    #    ml_filter['user'] = self
-    #    ml_filter['debit'] = abs(set_price) if set_price < 0 else 0
-    #    ml_filter['credit'] = abs(set_price) if set_price > 0 else 0
-    #    current_balance = User.objects.select_for_update().get(pk=self.id).balance
-    #    ml_filter['balance'] = current_balance + Decimal(set_price)
-
-
-
-
-        #current_balance = User.objects.select_for_update().get(pk=self.pk).balance
-        #updated_balance['balance'] = current_balance + Decimal(balance)

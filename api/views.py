@@ -4,11 +4,12 @@ from api.serializer import UserSerializer, TaskSerializer, CurrencyCirculationSe
 from django.contrib.auth import get_user_model
 from tasks.models import Task
 from billing.models import CurrencyCirculation, TaskRelatedNotes
+#from rest_auth.registration.views import RegisterView
 
 User = get_user_model()
 
 class ExecutorViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.filter(user_type = User.EXECUTOR)
+    queryset = User.objects.filter(user_type=User.EXECUTOR)
     serializer_class = UserSerializer
 
 
@@ -28,3 +29,7 @@ class CurrencyCirculationViewSet(viewsets.ModelViewSet):
 class TaskRelatedNotesViewSet(viewsets.ModelViewSet):
     queryset = TaskRelatedNotes.objects.all()
     serializer_class = TaskRelatedNotesSerializer
+
+#class RegistrationView(RegisterView):
+#    queryset = User.objects.all()
+#    serializer_class = RegisterSerializerCustom

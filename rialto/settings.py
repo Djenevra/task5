@@ -39,8 +39,21 @@ INSTALLED_APPS = [
     'tasks',
     'billing',
     'atl',
-    'django_tables2',
+    'rest_framework.authtoken',
+    'rest_auth',
+    'allauth',
+    'allauth.account',
+    'django.contrib.sites',
+    'rest_auth.registration',
+    'api'
 ]
+
+SITE_ID = 1
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+REST_AUTH_REGISTER_SERIALIZERS = {
+    'REGISTER_SERIALIZER':'api.serializer.RegisterSerializerCustom',
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
