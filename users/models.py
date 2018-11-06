@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from decimal import Decimal
 from django.utils.translation import gettext as _
-from billing.models import CurrencyCirculation
+
 from django.db.models import F
 from tasks.models import Task
 

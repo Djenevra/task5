@@ -49,7 +49,6 @@ ipython_config.py
 .python-version
 celerybeat-schedule
 *.sage.py
-*.sqlite.db
 .env
 .venv
 env/

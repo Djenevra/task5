@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
 from tasks.models import Task
-from billing.models import CurrencyCirculation, TaskRelatedNotes
+from billing.models import TaskRelatedNotes
 from rest_auth.registration.serializers import RegisterSerializer
 from django.utils.translation import gettext as _
 
@@ -17,10 +17,10 @@ class TaskSerializer(serializers.ModelSerializer):
         model = Task
         fields = ('title', 'description', 'created_by', 'set_price')
 
-class CurrencyCirculationSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = CurrencyCirculation
-        fields = ('user', 'task', 'reason', 'debit', 'credit', 'currency', 'balance')
+#class CurrencyCirculationSerializer(serializers.ModelSerializer):
+#    class Meta:
+#        model = CurrencyCirculation
+#        fields = ('user', 'task', 'reason', 'debit', 'credit', 'currency', 'balance')
 
 class TaskRelatedNotesSerializer(serializers.ModelSerializer):
     class Meta:
@@ -49,5 +49,6 @@ class RegisterSerializerCustom(RegisterSerializer):
             }
 
     def save(self, request):
-        new_user = super(RegisterSerializerCustom, serializers).save(request)
-        return new_user
+        user = super(RegisterSerializerCustom, self).save(request)
+        user.user_type=self.cleaned_data.get('user_type')
+        return user

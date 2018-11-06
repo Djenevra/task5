@@ -1,10 +1,10 @@
-from django.shortcuts import render#from django.contrib.auth.models import User
+from django.shortcuts import render
 from rest_framework import viewsets
-from api.serializer import UserSerializer, TaskSerializer, CurrencyCirculationSerializer, TaskRelatedNotesSerializer
+from api.serializer import UserSerializer, TaskSerializer, TaskRelatedNotesSerializer
 from django.contrib.auth import get_user_model
 from tasks.models import Task
-from billing.models import CurrencyCirculation, TaskRelatedNotes
-#from rest_auth.registration.views import RegisterView
+from billing.models import TaskRelatedNotes
+
 
 User = get_user_model()
 
@@ -22,9 +22,9 @@ class TaskViewSet(viewsets.ModelViewSet):
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
 
-class CurrencyCirculationViewSet(viewsets.ModelViewSet):
-    queryset = CurrencyCirculation.objects.all()
-    serializer_class = CurrencyCirculationSerializer
+#class CurrencyCirculationViewSet(viewsets.ModelViewSet):
+#    queryset = CurrencyCirculation.objects.all()
+#    serializer_class = CurrencyCirculationSerializer
 
 class TaskRelatedNotesViewSet(viewsets.ModelViewSet):
     queryset = TaskRelatedNotes.objects.all()
