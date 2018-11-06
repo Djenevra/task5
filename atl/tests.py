@@ -35,7 +35,8 @@ class TakeTaskTest(TestCase):
                             created_by=created_by, executor=executor)
     def test_filter(self):
         task = Task.objects.get(pk=1)
-        take_task(self, task.id)
+        self.client.get('/atl/sort/{{ task.id }}/take')
+        #take_task(self.request, task.id)
 
         #task=Task.objects.get(pk=task_id)
         #notes, created = TaskRelatedNotes.objects.get_or_create(
