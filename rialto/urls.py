@@ -14,7 +14,6 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.conf.urls import url, include
-from rest_framework import routers
 from api import views
 from rest_framework.routers import DefaultRouter
 
@@ -23,12 +22,12 @@ router = DefaultRouter()
 router.register('executors', views.ExecutorViewSet, 'executors')
 router.register('purchasers', views.PurchaserViewSet, 'purchasers')
 router.register('tasks', views.TaskViewSet)
-#router.register('currencycirculation', views.CurrencyCirculationViewSet)
 router.register('taskrelatednotes', views.TaskRelatedNotesViewSet)
 
 urlpatterns = [
     url(r'^', include(router.urls)),
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^api-auth/',
+        include('rest_framework.urls', namespace='rest_framework')),
     url('atl/', include('atl.urls')),
     url(r'^rest-auth/', include('rest_auth.urls')),
     url('rest-auth/registration/', include('rest_auth.registration.urls')),

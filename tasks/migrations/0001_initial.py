@@ -14,10 +14,12 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Task',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.AutoField(auto_created=True, primary_key=True,
+                 serialize=False, verbose_name='ID')),
                 ('description', models.CharField(max_length=255)),
                 ('title', models.CharField(max_length=255)),
-                ('set_price', models.DecimalField(decimal_places=2, default=0, max_digits=7)),
+                ('set_price', models.DecimalField(decimal_places=2, default=0,
+                 max_digits=7)),
             ],
         ),
     ]

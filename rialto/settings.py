@@ -20,11 +20,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = os.environ.get('SECRET_KEY',)
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) )
+DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
 ALLOWED_HOSTS = []
-
-
-
 
 INSTALLED_APPS = [
     'rest_framework',
@@ -52,7 +49,7 @@ SITE_ID = 1
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 REST_AUTH_REGISTER_SERIALIZERS = {
-    'REGISTER_SERIALIZER':'api.serializer.RegisterSerializerCustom',
+    'REGISTER_SERIALIZER': 'api.serializer.RegisterSerializerCustom',
 }
 
 MIDDLEWARE = [
@@ -86,16 +83,12 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'rialto.wsgi.application'
 
-
-
 DATABASES = {
     'default': {
         'ENGINE': os.environ.get('DATABASE_ENGINE', ''),
         'NAME': os.environ.get('DATABASE_NAME', ''),
     }
 }
-
-
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -112,8 +105,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
-
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -123,7 +114,5 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
-
 
 STATIC_URL = '/static/'

@@ -19,21 +19,27 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='taskrelatednotes',
             name='executor',
-            field=models.ForeignKey(default=None, on_delete=django.db.models.deletion.PROTECT, to=settings.AUTH_USER_MODEL),
+            field=models.ForeignKey(default=None,
+                                    on_delete=django.db.models.deletion.PROTECT,
+                                    to=settings.AUTH_USER_MODEL),
         ),
         migrations.AddField(
             model_name='taskrelatednotes',
             name='task',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='tasks.Task'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.PROTECT,
+                                    to='tasks.Task'),
         ),
         migrations.AddField(
             model_name='currencycirculation',
             name='task',
-            field=models.ForeignKey(default=None, null=True, on_delete=django.db.models.deletion.PROTECT, to='tasks.Task'),
+            field=models.ForeignKey(default=None, null=True,
+                                    on_delete=django.db.models.deletion.PROTECT,
+                                    to='tasks.Task'),
         ),
         migrations.AddField(
             model_name='currencycirculation',
             name='user',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to=settings.AUTH_USER_MODEL),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.PROTECT,
+                                    to=settings.AUTH_USER_MODEL),
         ),
     ]
