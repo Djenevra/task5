@@ -64,3 +64,4 @@ venv.bak/
 .dmypy.json
 dmypy.json
 *.swp
+*.db
